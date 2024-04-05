@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.util.Set;
+import control.CadastrarLivro;
+
 
 /**
  *
@@ -11,6 +14,7 @@ package view;
  */
 public class telaLivro extends javax.swing.JFrame {
     
+    CadastrarLivro cadLivro = new CadastrarLivro();
     
     /**
      * Creates new form telaLivro
@@ -28,18 +32,19 @@ public class telaLivro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        ratingValue = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         ano = new javax.swing.JTextField();
         genero = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rating1 = new javax.swing.JRadioButton();
+        rating2 = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rating3 = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton5 = new javax.swing.JRadioButton();
+        rating4 = new javax.swing.JRadioButton();
+        rating5 = new javax.swing.JRadioButton();
         livro = new javax.swing.JTextField();
         autor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -47,7 +52,7 @@ public class telaLivro extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        review = new javax.swing.JTextArea();
         id = new javax.swing.JTextField();
         procurarID = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -76,43 +81,48 @@ public class telaLivro extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton1.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("1");
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        ratingValue.add(rating1);
+        rating1.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        rating1.setForeground(new java.awt.Color(255, 255, 255));
+        rating1.setText("1");
+        rating1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        rating1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rating1ActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("2");
-        jRadioButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ratingValue.add(rating2);
+        rating2.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        rating2.setForeground(new java.awt.Color(255, 255, 255));
+        rating2.setText("2");
+        rating2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nota");
 
-        jRadioButton3.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("3");
-        jRadioButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ratingValue.add(rating3);
+        rating3.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        rating3.setForeground(new java.awt.Color(255, 255, 255));
+        rating3.setText("3");
+        rating3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Comentário");
 
-        jRadioButton4.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("4");
-        jRadioButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ratingValue.add(rating4);
+        rating4.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        rating4.setForeground(new java.awt.Color(255, 255, 255));
+        rating4.setText("4");
+        rating4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jRadioButton5.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
-        jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton5.setText("5");
-        jRadioButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ratingValue.add(rating5);
+        rating5.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
+        rating5.setForeground(new java.awt.Color(255, 255, 255));
+        rating5.setText("5");
+        rating5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         livro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,9 +146,9 @@ public class telaLivro extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Ano");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        review.setColumns(20);
+        review.setRows(5);
+        jScrollPane2.setViewportView(review);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,15 +184,15 @@ public class telaLivro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButton1)
+                        .addComponent(rating1)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton2)
+                        .addComponent(rating2)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton3)
+                        .addComponent(rating3)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton4)
+                        .addComponent(rating4)
                         .addGap(18, 18, 18)
-                        .addComponent(jRadioButton5))
+                        .addComponent(rating5))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67))
         );
@@ -203,11 +213,11 @@ public class telaLivro extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(livro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jRadioButton4)
-                            .addComponent(jRadioButton5))
+                            .addComponent(rating1)
+                            .addComponent(rating2)
+                            .addComponent(rating3)
+                            .addComponent(rating4)
+                            .addComponent(rating5))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(33, 33, 33)
@@ -253,6 +263,11 @@ public class telaLivro extends javax.swing.JFrame {
         salvar.setForeground(new java.awt.Color(0, 0, 0));
         salvar.setText("Salvar");
         salvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -320,9 +335,9 @@ public class telaLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_generoActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rating1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rating1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rating1ActionPerformed
 
     private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
         // TODO add your handling code here:
@@ -335,6 +350,35 @@ public class telaLivro extends javax.swing.JFrame {
     private void procurarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarIDActionPerformed
         ////////procurarID();
     }//GEN-LAST:event_procurarIDActionPerformed
+
+    private String getSelectedRating () {
+        rating1.setActionCommand("1");
+        rating2.setActionCommand("2");
+        rating3.setActionCommand("3");
+        rating4.setActionCommand("4");
+        rating5.setActionCommand("5");
+        
+        return ratingValue.getSelection().getActionCommand();
+            
+    }
+    
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
+        String livroCad = livro.getText();
+        String autorCad = autor.getText();
+        String generoCad = (String) genero.getSelectedItem();
+        String anoCad = ano.getText();
+        String ratingCad = getSelectedRating();
+        String reviewCad = review.getText();
+        
+        cadLivro.cadastrarLivro(livroCad, autorCad, generoCad, anoCad, ratingCad, reviewCad);
+        
+        System.out.println(livroCad);
+        System.out.println(autorCad);
+        System.out.println(generoCad);
+        System.out.println(anoCad);
+        System.out.println(ratingCad);
+        System.out.println(reviewCad);
+    }//GEN-LAST:event_salvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -386,15 +430,16 @@ public class telaLivro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField livro;
     private javax.swing.JButton procurarID;
+    private javax.swing.JRadioButton rating1;
+    private javax.swing.JRadioButton rating2;
+    private javax.swing.JRadioButton rating3;
+    private javax.swing.JRadioButton rating4;
+    private javax.swing.JRadioButton rating5;
+    private javax.swing.ButtonGroup ratingValue;
+    private javax.swing.JTextArea review;
     private javax.swing.JButton salvar;
     // End of variables declaration//GEN-END:variables
 }

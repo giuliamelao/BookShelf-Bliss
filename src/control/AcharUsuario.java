@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author giuli
+ * @author Giulia de Paula Melao // RA 2267861
  */
 public class AcharUsuario {
     public boolean acharUsuario(String pathfile, String emailOrUsername, String password) {
