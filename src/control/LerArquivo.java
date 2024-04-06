@@ -16,24 +16,27 @@ import java.util.List;
 
 public class LerArquivo {
     public List<String[]> lerArquivo(String filePath) {
-        List<String[]> userList = new ArrayList<>();
+        List<String[]> lista = new ArrayList<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String[] userData = line.split(";");
-                userList.add(userData);
+                String[] data = line.split(";");
+                lista.add(data);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        for (String[] userData : userList) {
-            for (String data : userData) {
-                System.out.print(data + " ");
+        for (String[] data : lista) {
+            for (String data2 : data) {
+                System.out.print(data2 + " ");
             }
             System.out.println();
         }
-        return userList;
+        return lista;
     }
+    
+    
+    
 }

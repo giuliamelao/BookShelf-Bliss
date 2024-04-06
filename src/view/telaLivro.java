@@ -6,7 +6,8 @@ package view;
 
 import java.util.Set;
 import control.CadastrarLivro;
-
+import control.SearchByID;
+import model.Livro;
 
 /**
  *
@@ -15,6 +16,8 @@ import control.CadastrarLivro;
 public class telaLivro extends javax.swing.JFrame {
     
     CadastrarLivro cadLivro = new CadastrarLivro();
+    SearchByID search = new SearchByID();
+    Livro livro = new Livro();
     
     /**
      * Creates new form telaLivro
@@ -45,7 +48,7 @@ public class telaLivro extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         rating4 = new javax.swing.JRadioButton();
         rating5 = new javax.swing.JRadioButton();
-        livro = new javax.swing.JTextField();
+        titulo = new javax.swing.JTextField();
         autor = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -57,6 +60,7 @@ public class telaLivro extends javax.swing.JFrame {
         procurarID = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         salvar = new javax.swing.JButton();
+        editar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 70));
@@ -124,9 +128,9 @@ public class telaLivro extends javax.swing.JFrame {
         rating5.setText("5");
         rating5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        livro.addActionListener(new java.awt.event.ActionListener() {
+        titulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                livroActionPerformed(evt);
+                tituloActionPerformed(evt);
             }
         });
 
@@ -170,13 +174,12 @@ public class telaLivro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(autor)
+                    .addComponent(titulo)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 221, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(livro))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(genero, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ano, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 221, Short.MAX_VALUE)))
                 .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +214,7 @@ public class telaLivro extends javax.swing.JFrame {
                         .addGap(55, 55, 55)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(livro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
                             .addComponent(rating1)
                             .addComponent(rating2)
@@ -263,9 +266,26 @@ public class telaLivro extends javax.swing.JFrame {
         salvar.setForeground(new java.awt.Color(0, 0, 0));
         salvar.setText("Salvar");
         salvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        salvar.setMaximumSize(new java.awt.Dimension(100, 40));
+        salvar.setMinimumSize(new java.awt.Dimension(100, 40));
+        salvar.setPreferredSize(new java.awt.Dimension(100, 40));
         salvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salvarActionPerformed(evt);
+            }
+        });
+
+        editar.setBackground(new java.awt.Color(255, 255, 255));
+        editar.setFont(new java.awt.Font("Book Antiqua", 1, 24)); // NOI18N
+        editar.setForeground(new java.awt.Color(0, 0, 0));
+        editar.setText("Editar");
+        editar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        editar.setMaximumSize(new java.awt.Dimension(100, 40));
+        editar.setMinimumSize(new java.awt.Dimension(100, 40));
+        editar.setPreferredSize(new java.awt.Dimension(100, 40));
+        editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarActionPerformed(evt);
             }
         });
 
@@ -291,7 +311,9 @@ public class telaLivro extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
         );
         jPanel2Layout.setVerticalGroup(
@@ -308,8 +330,10 @@ public class telaLivro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(editar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,16 +363,55 @@ public class telaLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_rating1ActionPerformed
 
-    private void livroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_livroActionPerformed
+    private void tituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tituloActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_livroActionPerformed
+    }//GEN-LAST:event_tituloActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ////////////deletar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    public void selecionarRadio (int rating) {
+        switch (rating) {
+            case 1:
+                rating1.setSelected(true);
+                break;
+            case 2:
+                rating2.setSelected(true);
+                break;
+            case 3:
+                rating3.setSelected(true);
+                break;
+            case 4:
+                rating4.setSelected(true);
+                break;
+            case 5:
+                rating5.setSelected(true);
+                break;
+            default:
+                break;
+}
+    }
+    
+    
+    
+    
     private void procurarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarIDActionPerformed
         ////////procurarID();
+        String idd = id.getText();
+        Livro livro = search.procurar(idd);
+        if (livro != null) {
+            titulo.setText(livro.getTitle());
+            autor.setText(livro.getAuthor());
+            genero.setSelectedItem(livro.getGenre());
+
+            //(String) genero.getSelectedItem();
+            ano.setText(String.valueOf(livro.getYearPublished()));
+            selecionarRadio(livro.getRating());
+            review.setText(livro.getReview());
+        }
+        
     }//GEN-LAST:event_procurarIDActionPerformed
 
     private String getSelectedRating () {
@@ -363,7 +426,7 @@ public class telaLivro extends javax.swing.JFrame {
     }
     
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
-        String livroCad = livro.getText();
+        String livroCad = titulo.getText();
         String autorCad = autor.getText();
         String generoCad = (String) genero.getSelectedItem();
         String anoCad = ano.getText();
@@ -379,6 +442,10 @@ public class telaLivro extends javax.swing.JFrame {
         System.out.println(ratingCad);
         System.out.println(reviewCad);
     }//GEN-LAST:event_salvarActionPerformed
+
+    private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -418,6 +485,7 @@ public class telaLivro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ano;
     private javax.swing.JTextField autor;
+    private javax.swing.JButton editar;
     private javax.swing.JComboBox<String> genero;
     private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
@@ -431,7 +499,6 @@ public class telaLivro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField livro;
     private javax.swing.JButton procurarID;
     private javax.swing.JRadioButton rating1;
     private javax.swing.JRadioButton rating2;
@@ -441,5 +508,6 @@ public class telaLivro extends javax.swing.JFrame {
     private javax.swing.ButtonGroup ratingValue;
     private javax.swing.JTextArea review;
     private javax.swing.JButton salvar;
+    private javax.swing.JTextField titulo;
     // End of variables declaration//GEN-END:variables
 }

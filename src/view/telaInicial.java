@@ -34,7 +34,6 @@ public class telaInicial extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 70));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 1, 36)); // NOI18N
         jLabel1.setText("Bem vindo!");
@@ -43,17 +42,6 @@ public class telaInicial extends javax.swing.JFrame {
         jLabel2.setText("BookShelf Bliss");
         jLabel2.setPreferredSize(new java.awt.Dimension(1000, 700));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Título", "Autor", "Genêro", "Ano publicado", "Rating", "Review"
-            }
-        ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
