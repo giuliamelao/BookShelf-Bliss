@@ -4,17 +4,49 @@
  */
 package view;
 
+import java.util.List;
+import java.util.ArrayList;
+import control.LerArquivo;
+import java.io.IOException;
+import java.util.Arrays;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author Giulia de Paula Melao // RA 2267861
  */
 public class telaInicial extends javax.swing.JFrame {
 
+    private JTable jTable;
+
     /**
      * Creates new form telaInicial
      */
     public telaInicial() {
         initComponents();
+        jTable = new JTable();
+        initTable();
+
+    }
+    private void initTable() {
+    LerArquivo lerArquivo = new LerArquivo();
+
+    List<String[]> bookData = lerArquivo.lerArquivo("book_data.txt");
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    for (String[] row : bookData) {
+        Object[] rowData = new Object[row.length];
+
+        for (int i = 0; i < row.length; i++) {
+            rowData[i] = row[i];
+        }
+
+        model.addRow(rowData);
+    }
+            
+            
     }
 
     /**
@@ -31,6 +63,7 @@ public class telaInicial extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        atualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocation(new java.awt.Point(300, 70));
@@ -42,6 +75,14 @@ public class telaInicial extends javax.swing.JFrame {
         jLabel2.setText("BookShelf Bliss");
         jLabel2.setPreferredSize(new java.awt.Dimension(1000, 700));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Titulo", "Autor", "Genero", "Ano", "Rating", "Review"
+            }
+        ));
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setBackground(new java.awt.Color(51, 51, 51));
@@ -52,6 +93,13 @@ public class telaInicial extends javax.swing.JFrame {
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        atualizar.setText("Atualizar Lista");
+        atualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atualizarActionPerformed(evt);
             }
         });
 
@@ -68,7 +116,9 @@ public class telaInicial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(309, 309, 309))
+                .addGap(163, 163, 163)
+                .addComponent(atualizar)
+                .addGap(67, 67, 67))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(53, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 897, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,7 +132,9 @@ public class telaInicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(55, 55, 55)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(atualizar))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(53, Short.MAX_VALUE))
@@ -96,6 +148,12 @@ public class telaInicial extends javax.swing.JFrame {
         new telaLivro().setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void atualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atualizarActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        initTable();
+    }//GEN-LAST:event_atualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,10 +187,13 @@ public class telaInicial extends javax.swing.JFrame {
             public void run() {
                 new telaInicial().setVisible(true);
             }
+            
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atualizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

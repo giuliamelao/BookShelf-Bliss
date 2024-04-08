@@ -23,7 +23,6 @@ public class AcharUsuario {
             String email = userData[2];    // Index 2 is the email
             String storedPassword = userData[3]; // Index 3 is the password
             
-            // Check if the email or username matches and if the password matches
             if ((emailOrUsername.equals(email) || emailOrUsername.equals(username)) && password.equals(storedPassword)) {
                 System.out.println("true");
                 return true; 
@@ -32,5 +31,7 @@ public class AcharUsuario {
         System.out.println("false");
         return false;
     }
+    
+    
     
 }

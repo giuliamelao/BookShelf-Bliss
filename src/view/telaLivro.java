@@ -7,6 +7,7 @@ package view;
 import java.util.Set;
 import control.CadastrarLivro;
 import control.SearchByID;
+import javax.swing.JOptionPane;
 import model.Livro;
 
 /**
@@ -24,6 +25,8 @@ public class telaLivro extends javax.swing.JFrame {
      */
     public telaLivro() {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
     }
 
     /**
@@ -369,10 +372,29 @@ public class telaLivro extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ////////////deletar();
+        String idToChange = id.getText();
+        
+        if (idToChange.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Digite o ID do livro que deseja editar! O ID digitado será deletado!", "ID EMPTY", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+            search.deletarLivro(idToChange);
+
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     
-    public void selecionarRadio (int rating) {
+    public void selecionarRadio(int rating) {
+        rating1.setSelected(false);
+        rating2.setSelected(false);
+        rating3.setSelected(false);
+        rating4.setSelected(false);
+        rating5.setSelected(false);
+
         switch (rating) {
             case 1:
                 rating1.setSelected(true);
@@ -391,9 +413,9 @@ public class telaLivro extends javax.swing.JFrame {
                 break;
             default:
                 break;
-}
+        }
     }
-    
+
     
     
     
@@ -425,6 +447,15 @@ public class telaLivro extends javax.swing.JFrame {
             
     }
     
+    private boolean isYearANumber(String ano) {
+        try {
+            Integer.parseInt(ano);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         String livroCad = titulo.getText();
         String autorCad = autor.getText();
@@ -433,18 +464,52 @@ public class telaLivro extends javax.swing.JFrame {
         String ratingCad = getSelectedRating();
         String reviewCad = review.getText();
         
-        cadLivro.cadastrarLivro(livroCad, autorCad, generoCad, anoCad, ratingCad, reviewCad);
+        if (isYearANumber(anoCad)) {
+            cadLivro.cadastrarLivro(livroCad, autorCad, generoCad, anoCad, ratingCad, reviewCad);
+
+            titulo.setText("");
+            autor.setText("");
+            ano.setText("");
+            review.setText("");
+        } else {
+            JOptionPane.showMessageDialog(null, "O ano deve ser um número. Digite novamente.", "Year not a number", JOptionPane.ERROR_MESSAGE);
+            ano.setText("");
+        }
         
-        System.out.println(livroCad);
-        System.out.println(autorCad);
-        System.out.println(generoCad);
-        System.out.println(anoCad);
-        System.out.println(ratingCad);
-        System.out.println(reviewCad);
     }//GEN-LAST:event_salvarActionPerformed
 
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
-        // TODO add your handling code here:
+        
+        String idToChange = id.getText();
+        
+        if (idToChange.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Digite o ID do livro que deseja editar! O ID digitado será modificado com os valores que você colocar nos campos!", "ID EMPTY", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String livroNovo = titulo.getText();
+            String autorNovo = autor.getText();
+            String generoNovo = (String) genero.getSelectedItem();
+            String anoNovo = ano.getText();
+            String ratingNovo = getSelectedRating();
+            String reviewNovo = review.getText();
+
+            // Check if the year is a number
+            if (isYearANumber(anoNovo)) {
+                // If the year is a number, proceed with editing the book
+                search.procurar(idToChange, livroNovo, autorNovo, generoNovo, anoNovo, ratingNovo, reviewNovo);
+                JOptionPane.showMessageDialog(null, "Livro editado com sucesso! Volte para a página principal e atualize a página para visualizar", "Edit Succesfull", JOptionPane.INFORMATION_MESSAGE);
+                titulo.setText("");
+                autor.setText("");
+                ano.setText("");
+                review.setText("");
+            } else {
+                // If the year is not a number, show an error message
+                JOptionPane.showMessageDialog(null, "O ano deve ser um número. Digite novamente.", "Year not a number", JOptionPane.ERROR_MESSAGE);
+                ano.setText("");
+            }
+        }
+
+        
+        
     }//GEN-LAST:event_editarActionPerformed
 
     /**

@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 /**
@@ -33,6 +35,25 @@ public class CadastroUsuario {
             System.out.println("Erro ao salvar. Tente novamente.");
             e.printStackTrace();
         }
+    }
+    
+    public boolean usuarioJaExiste(String email, String username) {
+        LerArquivo ler = new LerArquivo();
+        List<String[]> userList = new ArrayList<>();
+
+        userList = ler.lerArquivo("user_data.txt");
+        
+        for (String[] userData : userList) {
+            String usernameTxt = userData[1]; // Index 1 is the username
+            String emailTxt = userData[2];    // Index 2 is the email
+            
+            if ((email.equals(emailTxt) || username.equals(usernameTxt))) {
+                System.out.println("Username ou email já existe");
+                return true; 
+            }
+        }
+        System.out.println("false");
+        return false;
     }
     
 }

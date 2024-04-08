@@ -52,12 +52,12 @@ public class telaLogin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        name = new javax.swing.JTextField();
         email = new javax.swing.JTextField();
         username = new javax.swing.JTextField();
         password = new javax.swing.JTextField();
         passwordRepeat = new javax.swing.JTextField();
         cadastrar = new javax.swing.JButton();
+        name = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bookshelf Bliss");
@@ -177,12 +177,6 @@ public class telaLogin extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nome");
 
-        name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameActionPerformed(evt);
-            }
-        });
-
         username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameActionPerformed(evt);
@@ -205,6 +199,12 @@ public class telaLogin extends javax.swing.JFrame {
             }
         });
 
+        name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -222,13 +222,13 @@ public class telaLogin extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel9)
                             .addComponent(jLabel10))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(email, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                             .addComponent(username, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(name, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(password, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(passwordRepeat, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(passwordRepeat, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(name))))
                 .addGap(33, 33, 33))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(138, 138, 138)
@@ -241,9 +241,9 @@ public class telaLogin extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,8 +253,8 @@ public class telaLogin extends javax.swing.JFrame {
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -271,13 +271,13 @@ public class telaLogin extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(283, 283, 283))
+                .addGap(408, 408, 408))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +288,7 @@ public class telaLogin extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,6 +329,10 @@ public class telaLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Login realizado com sucesso. Você será redirecionado para a Tela Inicial", "Login Succesfull", JOptionPane.INFORMATION_MESSAGE);
             dispose();
             new telaInicial().setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou Senha Incorretos", "Login Unsuccesfull", JOptionPane.INFORMATION_MESSAGE);
+            login.setText("");
+            loginSenha.setText("");
         }
         
     }//GEN-LAST:event_entrarLoginActionPerformed
@@ -345,14 +349,22 @@ public class telaLogin extends javax.swing.JFrame {
         String passwordRepeatCad = passwordRepeat.getText();
 
         boolean equalPasswords = comparePasswords(passwordCad, passwordRepeatCad);
+        boolean jaExiste = cadastro.usuarioJaExiste(emailCad, usernameCad);
 
         if (equalPasswords) {
-            cadastro.cadastrar(nomeCad, usernameCad, emailCad, passwordCad);
-            name.setText("");
-            username.setText("");
-            email.setText("");
-            password.setText("");
-            passwordRepeat.setText("");
+            if (jaExiste == false) {
+                cadastro.cadastrar(nomeCad, usernameCad, emailCad, passwordCad);
+                name.setText("");
+                username.setText("");
+                email.setText("");
+                password.setText("");
+                passwordRepeat.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario ou email já exite, tente outro email ou username", "Usuário já Existe", JOptionPane.WARNING_MESSAGE);
+                username.setText("");
+                email.setText("");
+            }
+            
         }
 
     }//GEN-LAST:event_cadastrarActionPerformed
@@ -372,7 +384,11 @@ public class telaLogin extends javax.swing.JFrame {
 
     
     private boolean comparePasswords(String password1, String password2) {
-        if (!password1.equals(password2)) {
+
+        password1 = password1.trim();
+        password2 = password2.trim();
+
+        if (!password1.equalsIgnoreCase(password2)) {
             JOptionPane.showMessageDialog(null, "Senhas diferentes. Tente novamente.", "Erro em Senhas", JOptionPane.WARNING_MESSAGE);
             password.setText("");
             passwordRepeat.setText("");
@@ -380,6 +396,7 @@ public class telaLogin extends javax.swing.JFrame {
         }
         return true;
     }
+
     
     
     /**
