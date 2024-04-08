@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
 import java.util.List;
@@ -15,22 +12,28 @@ import javax.swing.table.DefaultTableModel;
 
 
 /**
- *
+ * Tela Inicial para o Usuário Cadastrado e Logado
+ * <p>
+ * Este jFrame conta apenas com dois botões e um jTable. Um botão para abrir a edição de livro e um botão para atualizar a jTable.
+ * </p>
  * @author Giulia de Paula Melao // RA 2267861
+ * @version 1.0
  */
 public class telaInicial extends javax.swing.JFrame {
 
     private JTable jTable;
 
-    /**
-     * Creates new form telaInicial
-     */
+    
     public telaInicial() {
         initComponents();
         jTable = new JTable();
         initTable();
 
     }
+    
+    /**
+     * Este método funciona para carregar a tabela quando abrir o jFrame automaticamente
+     */
     private void initTable() {
     LerArquivo lerArquivo = new LerArquivo();
 

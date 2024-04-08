@@ -1,10 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control;
-import control.LerArquivo;
-import java.util.ArrayList;
 import model.Livro;
 import java.util.List;
 import java.io.BufferedWriter;
@@ -13,10 +8,16 @@ import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author giuli
+ * Classe de tratamento de informações e dados
+ * Possui métodos de edição, exclusao e visualização
+ * @author Giulia de Paula Melao // RA 2267861
  */
 public class SearchByID extends CadastrarLivro{
+    
+    /**
+     * Deleta o livro conforme o ID é dado pelo usuario
+     * @param id 
+     */
     public void deletarLivro(String id) {
         LerArquivo ler = new LerArquivo();
         List<String[]> livroList = ler.lerArquivo("book_data.txt");
@@ -25,6 +26,7 @@ public class SearchByID extends CadastrarLivro{
 
         for (String[] livroData : livroList) {
             if (livroData[0].equals(id)) {
+                //caixa de popup para confirmação para deletar
                 int confirmacao = JOptionPane.showConfirmDialog(null, "Você tem certeza que deseja deletar o livro ID " + id + "?", "Confirmation", JOptionPane.YES_NO_OPTION);
                 if (confirmacao == JOptionPane.YES_OPTION) {
                     livroList.remove(livroData);
@@ -38,17 +40,25 @@ public class SearchByID extends CadastrarLivro{
 
         if (livroEncontrado) {
             writeToFile("book_data.txt", livroList);
-            System.out.println("Book with ID " + id + " deleted successfully.");
             JOptionPane.showMessageDialog(null, "Livro deletado com sucesso! Volte para a página principal e atualize a página para visualizar", "Delete Succesfull", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            System.out.println("Livro not found for ID: " + id);
             JOptionPane.showMessageDialog(null, "ID não encontrado!", "ID NOT FOUND", JOptionPane.ERROR_MESSAGE);
 
         }
     }
 
-    
+    /**
+     * Aqui nos próximos 2 métodos temos uma das pilares da orientação a objetos, os dois métodos possuem a mesma assinatura porém parametros diferentes
+     * o primeiro método é mais complexo, para edição e salvar o arquivo
+     * @param id
+     * @param livroNovo
+     * @param autorNovo
+     * @param generoNovo
+     * @param anoNovo
+     * @param ratingNovo
+     * @param reviewNovo 
+     */
     public void procurar(String id, String livroNovo, String autorNovo, String generoNovo, String anoNovo, String ratingNovo, String reviewNovo) {
         LerArquivo ler = new LerArquivo();
         List<String[]> livroList = ler.lerArquivo("book_data.txt");
@@ -81,7 +91,12 @@ public class SearchByID extends CadastrarLivro{
             System.out.println("Livro not found for ID: " + id);
         }
     }
-    
+
+    /**
+     * Este segundo método apenas para procurar o livro no arquivo
+     * @param id
+     * @return o valor do Objeto Livro
+     */
     public Livro procurar(String id) {
         LerArquivo ler = new LerArquivo();
 
@@ -96,7 +111,14 @@ public class SearchByID extends CadastrarLivro{
     }
     
     
-    
+   
+    /**
+     * método base para a classe
+     * aqui ele procura no txt a linha correta do livro
+     * @param id
+     * @param livroList
+     * @return objeto Livro
+     */
     public static Livro searchByID(String id, List<String[]> livroList) {
         for (String[] livroData : livroList) {
             if (livroData[0].equals(id)) {
@@ -115,6 +137,12 @@ public class SearchByID extends CadastrarLivro{
         return null;
     }
 
+    
+    /**
+     * método para edição e do arquivo, chamado em procurar()
+     * @param filename
+     * @param livroList 
+     */
     private void writeToFile(String filename, List<String[]> livroList) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             for (String[] livroData : livroList) {

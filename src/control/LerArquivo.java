@@ -1,12 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package control;
 
 /**
- *
- * @author giuli
+ * Classe de leitura de arquivo
+ * @author Giulia de Paula Melao // RA 2267861
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,6 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LerArquivo {
+    /**
+     * Método que lê um arquivo txt e transforma em um arraylist
+     * @param filePath
+     * @return arraylist de dados
+     */
     public List<String[]> lerArquivo(String filePath) {
         List<String[]> lista = new ArrayList<>();
 
@@ -28,6 +30,8 @@ public class LerArquivo {
             e.printStackTrace();
         }
 
+        
+        //print só para conferir no console se está funcionando
         for (String[] data : lista) {
             for (String data2 : data) {
                 System.out.print(data2 + " ");

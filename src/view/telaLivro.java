@@ -1,18 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package view;
 
-import java.util.Set;
 import control.CadastrarLivro;
 import control.SearchByID;
 import javax.swing.JOptionPane;
 import model.Livro;
 
 /**
- *
+ * Tela para edição, cadastro, visualização e exclusão de dados
  * @author Giulia de Paula Melao // RA 2267861
+ * @version 1.0
  */
 public class telaLivro extends javax.swing.JFrame {
     
@@ -21,7 +18,7 @@ public class telaLivro extends javax.swing.JFrame {
     Livro livro = new Livro();
     
     /**
-     * Creates new form telaLivro
+     * Cria new form telaLivro
      */
     public telaLivro() {
         initComponents();
@@ -370,6 +367,11 @@ public class telaLivro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tituloActionPerformed
 
+    /**
+     * Chama o método que verifica se ID está vazio
+     * Chama o método que deleta o livro
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ////////////deletar();
         String idToChange = id.getText();
@@ -382,12 +384,12 @@ public class telaLivro extends javax.swing.JFrame {
 
         }
         
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    /**
+     * Método para selecionar automaticamente o radio button quando o usuário pesquisar um livro
+     * @param rating 
+     */
     public void selecionarRadio(int rating) {
         rating1.setSelected(false);
         rating2.setSelected(false);
@@ -418,7 +420,10 @@ public class telaLivro extends javax.swing.JFrame {
 
     
     
-    
+    /**
+     * Botão que procura o ID e completa as caixas com os valores encontrados
+     * @param evt 
+     */
     private void procurarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_procurarIDActionPerformed
         ////////procurarID();
         String idd = id.getText();
@@ -428,7 +433,6 @@ public class telaLivro extends javax.swing.JFrame {
             autor.setText(livro.getAuthor());
             genero.setSelectedItem(livro.getGenre());
 
-            //(String) genero.getSelectedItem();
             ano.setText(String.valueOf(livro.getYearPublished()));
             selecionarRadio(livro.getRating());
             review.setText(livro.getReview());
@@ -436,6 +440,10 @@ public class telaLivro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_procurarIDActionPerformed
 
+    /**
+     * Método para retornar um valor do radio button escolhido
+     * @return 
+     */
     private String getSelectedRating () {
         rating1.setActionCommand("1");
         rating2.setActionCommand("2");
@@ -447,6 +455,12 @@ public class telaLivro extends javax.swing.JFrame {
             
     }
     
+    /**
+     * Método para encontrar erros de entrada do usuário
+     * Confere se o ano digitado é um numéro
+     * @param ano
+     * @return 
+     */
     private boolean isYearANumber(String ano) {
         try {
             Integer.parseInt(ano);
@@ -456,6 +470,12 @@ public class telaLivro extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Botão para cadastrar o livro
+     * Chama o método de erro de entrada isYearANumber
+     * Chama o método cadastrar
+     * @param evt 
+     */
     private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
         String livroCad = titulo.getText();
         String autorCad = autor.getText();
@@ -478,6 +498,12 @@ public class telaLivro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_salvarActionPerformed
 
+    /**
+     * Botão para editar o livro
+     * Chama o método de erro de entrada isYearANumber
+     * Chama o método procurar na assinatura de edição do método
+     * @param evt 
+     */
     private void editarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarActionPerformed
         
         String idToChange = id.getText();
@@ -492,9 +518,7 @@ public class telaLivro extends javax.swing.JFrame {
             String ratingNovo = getSelectedRating();
             String reviewNovo = review.getText();
 
-            // Check if the year is a number
             if (isYearANumber(anoNovo)) {
-                // If the year is a number, proceed with editing the book
                 search.procurar(idToChange, livroNovo, autorNovo, generoNovo, anoNovo, ratingNovo, reviewNovo);
                 JOptionPane.showMessageDialog(null, "Livro editado com sucesso! Volte para a página principal e atualize a página para visualizar", "Edit Succesfull", JOptionPane.INFORMATION_MESSAGE);
                 titulo.setText("");
@@ -502,7 +526,6 @@ public class telaLivro extends javax.swing.JFrame {
                 ano.setText("");
                 review.setText("");
             } else {
-                // If the year is not a number, show an error message
                 JOptionPane.showMessageDialog(null, "O ano deve ser um número. Digite novamente.", "Year not a number", JOptionPane.ERROR_MESSAGE);
                 ano.setText("");
             }
