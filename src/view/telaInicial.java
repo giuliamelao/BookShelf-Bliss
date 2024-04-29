@@ -23,7 +23,9 @@ public class telaInicial extends javax.swing.JFrame {
 
     private JTable jTable;
 
-    
+    /**
+     *
+     */
     public telaInicial() {
         initComponents();
         jTable = new JTable();

@@ -6,6 +6,7 @@ package control;
  * @author Giulia de Paula Melao // RA 2267861
  */
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -20,6 +21,18 @@ public class LerArquivo {
     public List<String[]> lerArquivo(String filePath) {
         List<String[]> lista = new ArrayList<>();
 
+        
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("Arquivo: " + filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+       
+        
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
